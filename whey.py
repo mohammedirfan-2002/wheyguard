@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 import streamlit as st
-# import base64
+import base64
 
 st.set_page_config(
     page_title="WheyGuard",
@@ -9,24 +9,24 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
-# def add_bg_from_local(image_file):
-#     with open(image_file, "rb") as f:
-#         encoded_string = base64.b64encode(f.read()).decode()
-#     st.markdown(
-#         f"""
-#         <style>
-#         .stApp {{
-#             background-image: url("data:image/png;base64,{encoded_string}");
-#             background-size: cover;
-#             background-position: center;
-#             background-repeat: no-repeat;
-#         }}
-#         </style>
-#         """,
-#         unsafe_allow_html=True
-#     )
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as f:
+        encoded_string = base64.b64encode(f.read()).decode()
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/png;base64,{encoded_string}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-# add_bg_from_local("D:\wheyguard\Airbrush-image-extender (2).jpeg")
+add_bg_from_local("Airbrush-image-extender (2).jpeg")
 
 
 model = joblib.load('whey_model.joblib')
