@@ -93,3 +93,11 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+st.markdown(
+    """
+    <p style='text-align: center; color: grey;'>
+        Repository <a href="https://github.com/mohammedirfan-2002" target="_blank" style="color:#0A66C2; text-decoration:none;"><b>Github</b></a>
+    </p>
+    """,
+    unsafe_allow_html=True
+)
