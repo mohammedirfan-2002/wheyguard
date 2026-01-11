@@ -26,13 +26,13 @@ def add_bg_from_local(image_file):
         unsafe_allow_html=True
     )
 
-add_bg_from_local("D:\wheyguard\Airbrush-image-extender (2).jpeg")
+add_bg_from_local("Airbrush-image-extender (2).jpeg")
 
 
-model = joblib.load('D:\wheyguard\whey_model.joblib')
-encoder = joblib.load('D:\wheyguard\onehotencoder.joblib')
-feature = joblib.load('D:\wheyguard\data.joblib')
-scaler = joblib.load('D:\wheyguard\scaler.joblib')
+model = joblib.load('whey_model.joblib')
+encoder = joblib.load('onehotencoder.joblib')
+feature = joblib.load('data.joblib')
+scaler = joblib.load('scaler.joblib')
 
 st.markdown("<h1 style='text-align: center; color: #FF4B4B;'>WheyGuard</h1>", unsafe_allow_html=True)
 st.subheader("Whey Protein Quality Checker")
