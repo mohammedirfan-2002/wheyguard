@@ -40,19 +40,26 @@ st.info("""Welcome to **WheyGuard** — an app to evaluate whey protein quality.
     Enter the sample measurements in the left side bar and press **Evaluate** to get an estimated quality of your whey protein.""")
 
 st.sidebar.header("Enter the Values")
-with st.sidebar.form(key='input_form'):
-    product_type = st.selectbox("Product type", options=["isolate", "concentrate", "blend"], index=0)
-    protein_pct = st.slider("Protein (%)", 0.0, 90.0, 85.0, step=0.1)
-    bcaa_g = st.slider("BCAA (g per 100g)", 0.0, 20.0, 12.0, step=0.01)
-    leucine_g = st.slider("Leucine (g per 100g)", 0.0, 15.0, 4.5, step=0.01)
-    denaturation_pct = st.slider("Denaturation (%)", 0.0, 50.0, 6.0, step=0.1)
-    odor_score = st.slider("Odor (1-10)", 0.0, 10.0, 8.0, step=0.1)
-    flavor_score = st.slider("Flavor (1-10)", 0.0, 10.0, 8.0, step=0.1)
-    cadmium_ppm = st.number_input("Cadmium (ppm)", min_value=0.0, max_value=0.0335, value=0.001, format="%f")
-    ftir_pc1 = st.number_input("FTIR_PC1 (0.0 - 10.0)", min_value=0.0, max_value=10.0, value=4.0, format="%f")
-    submitted = st.form_submit_button(label=' Evaluate')
 
-input_data = [[product_type, protein_pct, bcaa_g, leucine_g, denaturation_pct,odor_score, flavor_score, cadmium_ppm, ftir_pc1]]
+with st.sidebar.form(key='input_form'):
+    product_type = st.selectbox("Product type", ["isolate", "concentrate", "blend"], index=0)
+    protein_pct = st.slider("Protein (%)", 0.0, 90.0, 85.0, 0.1)
+    carbs_g = st.slider("Carbohydrates (g per 100g)", 0.0, 16.19, 5.0, 0.01)
+    fat_g = st.slider("Fat (g per 100g)", 0.0, 10.0, 2.0, 0.01)
+    moisture_pct = st.slider("Moisture (%)", 0.59, 7.85, 3.0, 0.01)
+    bcaa_g = st.slider("BCAA (g per 100g)", 0.0, 20.0, 12.0, 0.01)
+    leucine_g = st.slider("Leucine (g per 100g)", 0.0, 15.0, 4.5, 0.01)
+    solubility_index = st.slider("Solubility Index", 14.01, 100.0, 85.0, 0.1)
+    denaturation_pct = st.slider("Denaturation (%)", 0.0, 58.8, 6.0, 0.1)
+    odor_score = st.slider("Odor (1–10)", 0.0, 10.0, 8.0, 0.1)
+    flavor_score = st.slider("Flavor (1–10)", 0.0, 10.0, 8.0, 0.1)
+    lead_ppm = st.number_input("Lead (ppm)", 0.0, 0.0335, 0.001, format="%f")
+    cadmium_ppm = st.number_input("Cadmium (ppm)", 0.0, 0.0335, 0.001, format="%f")
+    submitted = st.form_submit_button(label="Evaluate")
+
+
+input_data = [[product_type,protein_pct,carbs_g,fat_g,moisture_pct,bcaa_g,leucine_g,solubility_index,denaturation_pct,odor_score,
+               flavor_score,lead_ppm,cadmium_ppm]]
 input_df = pd.DataFrame(input_data, columns=feature.columns)
 input_encoded = encoder.transform(input_df)
 input_scaled = scaler.transform(input_encoded)
