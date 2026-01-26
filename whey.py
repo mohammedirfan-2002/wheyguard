@@ -68,13 +68,10 @@ pred = model.predict(input_scaled)
 if submitted:
     if pred[0] == "High":
         st.success(" Predicted Quality: HIGH")
-        st.metric(label="Protein Purity", value="Excellent")
     elif pred[0] == "Medium":
         st.warning("Predicted Quality: MEDIUM")
-        st.metric(label="Protein Purity", value="Moderate")
     else:
         st.error("Predicted Quality: LOW")
-        st.metric(label="Protein Purity", value="Poor")
 
 st.markdown("---")
 st.markdown(
